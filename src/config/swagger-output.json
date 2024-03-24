@@ -1,0 +1,176 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "H-E-B Backend Code Exercise APIs",
+    "description": "HTTP REST APIs for a service that ingests user images, analyzes them for object detection, and returns the enhanced content",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/images": {
+      "get": {
+        "tags": [
+          "images"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "images"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Enter direct image URL for image to be sent to Google Vision API for Object Detection",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "requests": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "features": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "maxResults": {
+                              "type": "number",
+                              "example": 10
+                            },
+                            "type": {
+                              "type": "string",
+                              "example": "OBJECT_LOCALIZATION"
+                            }
+                          },
+                          "required": [
+                            "maxResults"
+                          ]
+                        }
+                      },
+                      "image": {
+                        "type": "object",
+                        "properties": {
+                          "source": {
+                            "type": "object",
+                            "properties": {
+                              "imageUri": {
+                                "type": "string",
+                                "example": "https://enter.image.url"
+                              }
+                            },
+                            "required": [
+                              "imageUri"
+                            ]
+                          }
+                        }
+                      },
+                      "labels": {
+                        "type": "object",
+                        "properties": {
+                          "label": {
+                            "type": "string",
+                            "example": "Default_Label"
+                          }
+                        },
+                        "required": [
+                          "label"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "enableObjectDetection": {
+                  "type": "boolean",
+                  "example": true
+                }
+              },
+              "required": [
+                "enableObjectDetection"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/images/by": {
+      "get": {
+        "tags": [
+          "images"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "objects",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/images/{id}": {
+      "get": {
+        "tags": [
+          "images"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  }
+}

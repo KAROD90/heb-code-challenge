@@ -88,7 +88,7 @@ To run this project locally, follow these steps:
 6. Sequelize will attempt to connect and sync to the Database upon success the server will start on localhost port: 3000: `http://localhost:3000`
 
 ## Usage
-After installing and running the project locally, you can utilize an API platform such as Insomnia, Postman, Thunder Client, etc. to submit the following REST API request:
+After installing and running the project locally, you can access the built-in Swagger API Documentation at `http://localhost:3000/swagger/`. This documentation allows you to interact with the APIs directly. Alternatively, you can use an API platform such as Insomnia, Postman, Thunder Client, etc., to submit REST API requests.:
 
 ### GET /images
       - http://localhost:3000/api/images

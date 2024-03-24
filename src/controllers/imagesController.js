@@ -53,6 +53,33 @@ const analyzeNewImage = async (req, res) => {
     console.error('Error occurred:', error);
     res.status(500).json({ error: "Internal Server Error" });
   }
+  /*  #swagger.parameters['body'] = {
+        in: 'body',
+        description: 'Enter direct image URL for image to be sent to Google Vision API for Object Detection',
+        schema: {
+  "requests": [
+    {
+      "features": [
+        {
+          $maxResults: 10,
+          "type": "OBJECT_LOCALIZATION"
+        }
+      ],
+      "image": {
+        "source": {
+          $imageUri: "https://enter.image.url"
+        }
+      },
+      "labels": {
+        $label: "Default_Label"
+      }
+    }
+  ],
+  $enableObjectDetection: true
+        }
+}
+#swagger.tags = ['images']
+*/
 }
 
 const getAllImageMetaData = async (req, res) => {
@@ -69,6 +96,7 @@ const getAllImageMetaData = async (req, res) => {
     console.error('Error occurred:', error);
     res.status(500).json({ error: "Internal Server Error" });
   }
+  //#swagger.tags = ['images']
 }
 
 const getImagesBySpecifiedObjects = async (req, res) => {
@@ -97,6 +125,7 @@ const getImagesBySpecifiedObjects = async (req, res) => {
     console.error('Error occurred:', error);
     res.status(500).json({ error: "Internal Server Error" });
   }
+  //#swagger.tags = ['images']
 }
 
 const getImageById = async (req, res) => {
@@ -114,6 +143,7 @@ const getImageById = async (req, res) => {
     console.error('Error occurred:', error);
     res.status(500).json({ error: "Internal Server Error" });
   }
+  //#swagger.tags = ['images']
 }
 
 
